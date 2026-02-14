@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine Proposal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(to bottom, #ffb6c1, #ffe4e1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      text-align: center;
+    }
+    h1 {
+      color: #d60000;
+      font-size: 6vw;
+      margin: 20px;
+    }
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    button {
+      padding: 12px 24px;
+      margin: 10px;
+      font-size: 5vw;
+      border: none;
+      border-radius: 8px;
+      background-color: #fff;
+      color: #d60000;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    button:active {
+      transform: scale(0.95);
+    }
+    .balloon {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: red;
+      border-radius: 50% 50% 50% 50%;
+      animation: float 8s infinite ease-in-out;
+    }
+    .balloon::after {
+      content: "";
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      width: 2px;
+      height: 25px;
+      background: black;
+    }
+    @keyframes float {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(120px, -250px); }
+      100% { transform: translate(0, 0); }
+    }
+    #message {
+      margin-top: 20px;
+      font-size: 5vw;
+      color: darkred;
+      display: none;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Will you be my Valentine Papuuu?</h1>
+  <div class="buttons">
+    <button id="yesBtn">Yes ❤️</button>
+    <button id="noBtn">No 💔</button>
+  </div>
+  <div class="balloon"></div>
+  <div id="message">I knew you would say YES! ❤️<br>
+    Let’s meet Soon...
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const message = document.getElementById('message');
+
+    // Make "No" button run away on hover or touch
+    function moveButton() {
+      const x = Math.floor(Math.random() * 150) - 75;
+      const y = Math.floor(Math.random() * 150) - 75;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    noBtn.addEventListener('mouseover', moveButton);
+    noBtn.addEventListener('touchstart', moveButton);
+
+    yesBtn.addEventListener('click', () => {
+      message.style.display = 'block';
+      document.querySelector('.buttons').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
